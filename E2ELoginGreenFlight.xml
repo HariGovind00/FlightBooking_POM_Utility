@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite  name="E2E-EKart">
+
+<listeners>
+<listener class-name="com.org.basicSelenium.ListenerPack.Listener"/>
+</listeners>
+
+  <test thread-count="3" name="BaseTest">
+    <classes>
+      <class name="com.org.basicSelenium.BasicSeleniumConcept.BaseTest"/>
+    </classes>
+  </test>
+  
+</suite> <!-- Suite -->
