@@ -3,7 +3,6 @@
  */
 package com.org.basicSelenium.FightBookingPages;
 
-import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -87,38 +86,68 @@ public class FlightBookingHomePage extends Action {
 			if (states.get(i).getText().equalsIgnoreCase(DomesticDestinationStateName)) {
 				System.out.println("To Journey:" + states.get(i).getText());
 				states.get(i).click();
+				
 			}
 		}
 
 	}
 
 //From Calendar Handle
-	private By Year = By.xpath(".ui-datepicker-title span:second-child");
-	private By Month = By.xpath(".ui-datepicker-title span:first-child");
+	private By clickReturnJourneyCalendar=By.id("ctl00_mainContent_view_date2");
+	private By Month = By.xpath("//span[@class='ui-datepicker-month']");
+	private By Year = By.xpath("//span[@class='ui-datepicker-year']");
 	private By PreviousBtn = By.cssSelector(".ui-datepicker-prev span");
 	private By NextBtn = By.cssSelector(".ui-datepicker-next span");
-
-	public void fromCalendar(String month, String year) {
-		System.out.println("From Calendar Method loaded.");
-		String monthDisplayed = getText(Month);
-		String yearDisplayed = getText(Year);
-		while (!monthDisplayed.contains(month) && yearDisplayed.contains(year))
+	public void fromCalendar(String month, String year,int date) {
+		sleep(1000);
+		By day=By.xpath("//div[@class='ui-datepicker-group ui-datepicker-group-first']//a[text()='"+date+"']");
+		String Mon = getText(Month);
+		String Yrs = getText(Year);
+		while (!(Mon.contains(month) && Yrs.contains(year))) 
 		{
-			System.out.println("Scipt loaded While Condition");
-			if (yearDisplayed.equalsIgnoreCase("2025"))
+			Mon = getText(Month);
+			Yrs = getText(Year);
+			if (Mon.equalsIgnoreCase(month) && Yrs.equalsIgnoreCase(year))
 			{
-				System.out.println("WELCOME:"+yearDisplayed);
-			}
-			else 
+				String daySel=getText(day);
+				System.out.println("Trip booked on:"+daySel+":"+Mon+":"+Yrs);
+				click(day);
+				break;
+			} 
+			else
 			{
-				
-				Month = By.className("ui-datepicker-month");
-				Year = By.className("ui-datepicker-year");
 				click(NextBtn);
-				
-				
 			}
+
 		}
+
+	}
+	
+//ToCalendar
+	public PassengerDetailsPage toCalendar(String month, String year,int date) {
+		sleep(1000);
+		click(clickReturnJourneyCalendar);
+		By day=By.xpath("//div[@class='ui-datepicker-group ui-datepicker-group-first']//a[text()='"+date+"']");
+		String Mon = getText(Month);
+		String Yrs = getText(Year);
+		while (!(Mon.contains(month) && Yrs.contains(year))) 
+		{
+			Mon = getText(Month);
+			Yrs = getText(Year);
+			if (Mon.equalsIgnoreCase(month) && Yrs.equalsIgnoreCase(year))
+			{
+				String daySel=getText(day);
+				System.out.println("Trip booked on:"+daySel+":"+Mon+":"+Yrs);
+				click(day);
+				break;
+			} 
+			else
+			{
+				click(NextBtn);
+			}
+
+		}
+		return new PassengerDetailsPage();
 
 	}
 

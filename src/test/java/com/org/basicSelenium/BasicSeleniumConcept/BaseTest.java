@@ -8,7 +8,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.org.basicSelenium.FightBookingPages.CurrencySelPage;
 import com.org.basicSelenium.FightBookingPages.FlightBookingHomePage;
+import com.org.basicSelenium.FightBookingPages.PassengerDetailsPage;
 import com.org.basicSelenium.ListenerPack.RetryFailureTest;
 import com.org.basicSelenium.RahulShettyAcademyLogin.LoginPage;
 import com.org.basicSelenium.RahulShettyAcademyLogin.RahulShettyHomePage;
@@ -54,8 +56,13 @@ public void FlightHomePageTest() throws InterruptedException
 	FlightHomePage.tripSelection();
 	FlightHomePage.fromTripSel("Bengaluru (BLR)");
 	FlightHomePage.toTripSel("Chennai (MAA)");
-	FlightHomePage.fromCalendar("May", "2025");
-}
+	FlightHomePage.fromCalendar("November", "2025",23);
+	FlightHomePage.toCalendar("December", "2025", 22);
+	PassengerDetailsPage pd=new PassengerDetailsPage();
+	pd.passengerTicketSelPage("infant",3); 
+	CurrencySelPage cur=new CurrencySelPage();
+	cur.currecyDropdownSel("USD");
+	}
 
 
 
