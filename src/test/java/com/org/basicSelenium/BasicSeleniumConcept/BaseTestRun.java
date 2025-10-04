@@ -17,7 +17,7 @@ import com.org.basicSelenium.RahulShettyAcademyLogin.RahulShettyHomePage;
 
 import UtilityActionMethods.Action;
 
-public class BaseTest extends Action
+public class BaseTestRun extends Action
 {
 	RahulShettyHomePage home=new RahulShettyHomePage();
 	LoginPage log=new LoginPage();

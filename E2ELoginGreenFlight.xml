@@ -6,9 +6,9 @@
 <listener class-name="com.org.basicSelenium.ListenerPack.Listener"/>
 </listeners>
 
-  <test thread-count="3" name="BaseTest">
+  <test thread-count="3" name="BaseTestRun">
     <classes>
-      <class name="com.org.basicSelenium.BasicSeleniumConcept.BaseTest"/>
+      <class name="com.org.basicSelenium.BasicSeleniumConcept.BaseTestRun"/>
     </classes>
   </test>
   
