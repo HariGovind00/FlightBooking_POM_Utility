@@ -40,7 +40,7 @@ public ExtentReports extentReportPage()
 	
 	String reportFilePath=System.getProperty("user.dir")+"\\ExtentReportFIle\\ExtentFile.html";
 	ExtentSparkReporter report=new ExtentSparkReporter(reportFilePath);
-	report.config().setReportName("Hari Govind");
+	report.config().setReportName("Hari Govind Kumar");
 	report.config().setDocumentTitle("Extent Report");
 	extent.attachReporter(report);
 	extent.setSystemInfo("Test Automation Engineer", "Hari Govind");
